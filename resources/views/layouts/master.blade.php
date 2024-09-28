@@ -65,7 +65,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('/ManageCoaches')}}" class="nav-link">
+                            <a href="{{url('/users')}}" class="nav-link">
                                 <i class="fa fa-users" aria-hidden="true"></i>
                                 <p> Manage Users</p>
                             </a>
@@ -79,13 +79,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{url('manage-team-categories')}}" class="nav-link"> <i
+                                    <a href="{{url('manage-categories')}}" class="nav-link"> <i
                                             class="far fa-circle nav-icon"></i>
                                         <p>Categories</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{url('manage-teams')}}" class="nav-link"> <i
+                                    <a href="{{url('manage-products')}}" class="nav-link"> <i
                                             class="far fa-circle nav-icon"></i>
                                         <p>Products</p>
                                     </a>
@@ -106,21 +106,21 @@
                         </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{url('transactions/')}}" class="nav-link">
                                 <i class="fas fa-dollar-sign    "></i>
                                 <p> Transactions</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{url('coupons/')}}" class="nav-link">
                                 <i class="fa fa-code" aria-hidden="true"></i>
                                 <p>Manage Coupons</p>
                             </a>
                         </li>
 
                         <li class="nav-item"></li>
-                        <a href="#" class="nav-link">
+                        <a href="{{url('announcements/')}}" class="nav-link">
                             <i class="fa fa-newspaper" aria-hidden="true"></i>
                             <p>Announcement</p>
                         </a>
@@ -135,7 +135,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{url('manage-team-categories')}}" class="nav-link"> <i
+                                    <a href="{{url('manage-categories')}}" class="nav-link"> <i
                                             class="far fa-circle nav-icon"></i>
                                         <p>Manage Faqs</p>
                                     </a>
@@ -171,7 +171,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{url('manage-team-categories')}}" class="nav-link"> <i
+                                    <a href="{{url('admin/blog-categories')}}" class="nav-link"> <i
                                             class="far fa-circle nav-icon"></i>
                                         <p>Categories</p>
                                     </a>
