@@ -14,10 +14,15 @@ use App\Http\Controllers\FrontController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//frontend routes 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Front/index');
 });
+
+
+
+
+
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -80,3 +85,5 @@ Route::get('/admin/blog-posts', [AdminController::class, 'blogPostIndex'])->name
 Route::post('/admin/blog-posts/store', [AdminController::class, 'blogPostStore'])->name('blog.post.store');
 Route::put('/admin/blog-posts/update/{id}', [AdminController::class, 'blogPostUpdate'])->name('blog.post.update');
 Route::delete('/admin/blog-posts/delete/{id}', [AdminController::class, 'blogPostDestroy'])->name('blog.post.destroy');
+
+
