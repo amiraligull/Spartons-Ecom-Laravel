@@ -170,7 +170,7 @@
                         <ul class="nav-menu sm-horizontal theme-scrollbar" id="sm-horizontal">
                             <li class="mobile-back" id="mobile-back">Back
                             </li>
-                            <li> <a class="nav-link" href="index.html">Home </a></li>
+                            <li> <a class="nav-link" href="{{url('/')}}">Home </a></li>
                             <li> <a class="nav-link" href="#">
                                     Shop
                                     <span>
@@ -182,8 +182,8 @@
                                     </span>
                                 </a>
                                 <ul class="nav-submenu">
-                                    <li> <a href="shop.html">Bar Soap </a></li>
-                                    <li> <a href="newstrending.html">New & Trending</a></li>
+                                    <li> <a href="{{url('shop/')}}">Bar Soap </a></li>
+                                    <li> <a href="#">New & Trending</a></li>
                                 </ul>
                             </li>
 
@@ -197,8 +197,8 @@
                                     </span>
                                 </a>
                                 <ul class="nav-submenu">
-                                    <li> <a href="squatch.html">The Squatch Difference </a></li>
-                                    <li> <a href="cleanallmankind.html">Clean for all Mankind </a></li>
+                                    <li> <a href="{{url('squatchDifference/')}}">The Squatch Difference </a></li>
+                                    <li> <a href="#">Clean for all Mankind </a></li>
                                 </ul>
                             </li>
 
@@ -212,8 +212,8 @@
                                     </span>
                                 </a>
                                 <ul class="nav-submenu">
-                                    <li> <a href="ingrediants.html">Ingrediants</a></li>
-                                    <li> <a href="discount.html">Hero Discounts </a></li>
+                                    <li> <a href="{{url('blog')}}">Ingrediants</a></li>
+                                    <li> <a href="{{url('discounts')}}">Hero Discounts </a></li>
                                 </ul>
                             </li>
 
@@ -229,11 +229,11 @@
                                     </span>
                                 </a>
                                 <ul class="nav-submenu">
-                                    <li> <a href="faq.html">FAQ </a></li>
-                                    <li> <a href="refund.html">Returns & Refund</a></li>
-                                    <li> <a href="contact.html">Contact </a></li>
-                                    <li> <a href="terms.html">Terms of Use </a></li>
-                                    <li> <a href="policy.html">Privacy Policy </a></li>
+                                    <li> <a href="{{url('faq')}}">FAQ </a></li>
+                                    <li> <a href="{{url('returnFund')}}">Returns & Refund</a></li>
+                                    <li> <a href="{{url('contact')}}">Contact </a></li>
+                                    <li> <a href="{{url('terms')}}">Terms of Use </a></li>
+                                    <li> <a href="{{url('policy')}}">Privacy Policy </a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -255,12 +255,12 @@
                             <li class="onhover-div"><a href="#"><i class="iconsax" data-icon="user-2"></i></a>
                                 <div class="onhover-show-div user">
                                     <ul>
-                                        <li> <a href="login.html">Login </a></li>
-                                        <li> <a href="sign-up.html">Register</a></li>
+                                        <li> <a href="{{url('login')}}">Login </a></li>
+                                        <li> <a href="{{url('register')}}">Register</a></li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class=" shopping-cart"> <a class="p-0" href="cart.html">
+                            <li class=" shopping-cart"> <a class="p-0" href="{{url('cart')}}">
                                     <div class="shoping-prize"><i class="iconsax pe-2" data-icon="basket-2"> </i>0
                                         items</div>
                                 </a></li>

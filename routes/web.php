@@ -15,31 +15,37 @@ use App\Http\Controllers\FrontController;
 |
 */
 //frontend routes 
-Route::get('/', function () {
-    return view('Front/index');
-});
-
-
-
-
+Route::get('/', [App\Http\Controllers\FrontController::class, 'index']);
+Route::get('/contact', [App\Http\Controllers\FrontController::class, 'contact']);
+Route::get('/shop', [App\Http\Controllers\FrontController::class, 'shop']);
+Route::get('/productDetails', [App\Http\Controllers\FrontController::class, 'productDetails']);
+Route::get('/blog', [App\Http\Controllers\FrontController::class, 'blog']);
+Route::get('/blogDetails', [App\Http\Controllers\FrontController::class, 'blogDetails']);
+Route::get('/discounts', [App\Http\Controllers\FrontController::class, 'discounts']);
+Route::get('/faq', [App\Http\Controllers\FrontController::class, 'faq']);
+Route::get('/terms', [App\Http\Controllers\FrontController::class, 'terms']);
+Route::get('/policy', [App\Http\Controllers\FrontController::class, 'policy']);
+Route::get('/returnFund', [App\Http\Controllers\FrontController::class, 'returnFund']);
+Route::get('/squatchDifference', [App\Http\Controllers\FrontController::class, 'squatchDifference']);
+Route::get('/cart', [App\Http\Controllers\FrontController::class, 'cart']);
+Route::get('/checkout', [App\Http\Controllers\FrontController::class, 'checkout']);
+Route::get('/dashboard', [App\Http\Controllers\FrontController::class, 'dashboard']);
+Route::get('/thanks', [App\Http\Controllers\FrontController::class, 'thanks']);
 
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 //Users Route
 Route::get('users', [AdminController::class, 'Userindex'])->name('users.index');
 Route::post('users', [AdminController::class, 'Userstore'])->name('users.store');
 Route::put('users/{id}', [AdminController::class, 'Userupdate'])->name('users.update');
 Route::delete('users/{id}', [AdminController::class, 'Userdestroy'])->name('users.destroy');
 
-
 // Announcements Route
 Route::get('announcements', [AdminController::class, 'announcementindex'])->name('announcements.index');
 Route::post('announcements', [AdminController::class, 'announcementstore'])->name('announcements.store');
 Route::put('announcements/{id}', [AdminController::class, 'announcementupdate'])->name('announcements.update');
 Route::delete('announcements/{id}', [AdminController::class, 'announcementdelete'])->name('announcements.delete');
-
 
 // Product Routes
 Route::get('/manage-products', [AdminController::class, 'Productindex'])->name('manage-products');
@@ -67,7 +73,6 @@ Route::get('/orders', [AdminController::class, 'orderIndex'])->name('orders.inde
 Route::post('/orders', [AdminController::class, 'orderStore'])->name('orders.store');
 Route::put('/orders/{id}/status', [AdminController::class, 'orderStatusUpdate'])->name('orders.status.update');
 Route::delete('/orders/{id}', [AdminController::class, 'orderDestroy'])->name('orders.destroy');
-
 
 // Route::get('/', [FrontController::class, 'index']);
 Route::get('/settings', [AdminController::class, 'showSettingsForm'])->name('settings');
