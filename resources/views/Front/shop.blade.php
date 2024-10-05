@@ -1,5 +1,10 @@
 @extends('layouts.Front')
 @section('content')
+<style>
+.product-tab-content button {
+    width: 100% !important;
+}
+</style>
 <section class="section-b-space pt-0">
     <div class="heading-banner">
         <div class="custom-container container">
@@ -17,7 +22,6 @@
         </div>
     </div>
 </section>
-
 
 
 <section class="section-b-space pt-0">
@@ -83,45 +87,47 @@
                     </div>
                     <div class="product-tab-content ratio1_3">
                         <div class="row-cols-lg-4 row-cols-md-3 row-cols-2 grid-section view-option row g-3 g-xl-4">
-                            <div>
-                                <div class="product-box-3">
-                                    <div class="img-wrapper">
-                                        <div class="label-block"><span class="lable-1">NEW</span><a
-                                                class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i
-                                                    class="iconsax" data-icon="heart" aria-hidden="true"
-                                                    data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a>
-                                        </div>
-                                        <div class="product-image"><a class="pro-first"
-                                                href="{{url('productDetails')}}"> <img class="bg-img"
-                                                    src="{{asset('assets/front/images/product/product-3/2.webp')}}"
-                                                    alt="product"></a><a class="pro-sec"
-                                                href="{{url('productDetails')}}"> <img class="bg-img"
-                                                    src="{{asset('assets/front/images/product/product-3/2.webp')}}"
-                                                    alt="product"></a>
-                                        </div>
-                                        <div class="cart-info-icon">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0">
-                                                <i class="iconsax" data-icon="basket-2" aria-hidden="true"
-                                                    data-bs-toggle="tooltip" data-bs-title="Add to cart">
-                                                </i>
-                                            </a>
-                                        </div>
+                            @foreach($products as $product)
+                                                  
+                                                            <div class="product-box-3">   
+                                                        <div class="img-wrapper">
+                                                            <div class="label-block">
+                                                                <span class="lable-1">NEW</span>
+                                                                <a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0">
+                                                                    <i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-image">
+                                                                <a class="pro-first" href="{{ route('productDetails', $product->id) }}">
+                                                                    <img class="bg-img" src="{{ url('public/images/' . $product->image) }}" alt="{{ $product->name }}">
+                                                                </a>
+                                                                <a class="pro-sec" href="{{ route('productDetails', $product->id) }}">
+                                                                    <img class="bg-img" src="{{ url('public/images/' . $product->image) }}" alt="{{ $product->name }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="cart-info-icon">
+                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0">
+                                                                    <i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to cart"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-detail">
+                                                            <a href="{{ route('productDetails', $product->id) }}">
+                                                                <h5>{{ $product->title }}</h5>
+                                                            </a>
+                                                            
+                                                            <p>Price:${{ $product->price }} <del>${{ $product->original_price }}</del></p>
+                                                            <form action="{{ route('add.to.cart') }}" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <button type="submit" class="btn btn-primary btn-dark ">Add To Cart</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                     
 
-                                    </div>
-                                    <div class="product-detail">
-
-                                        <a href="{{url('productDetails')}}">
-                                            <h6>Greciilooks Women's Stylish Top</h6>
-                                        </a>
-                                        <p>$100.00 <del>$140.00</del> </p>
-                                        <a class="btn btn-primary btn-dark">Add To Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
+                            @endforeach
                         </div>
                     </div>
                     <div class="pagination-wrap">

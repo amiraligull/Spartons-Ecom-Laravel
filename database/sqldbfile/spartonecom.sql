@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2024 at 11:35 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Oct 05, 2024 at 03:19 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `spartons`
+-- Database: `spartonecom`
 --
 
 -- --------------------------------------------------------
@@ -117,8 +117,7 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'saup', 'saup', '2024-09-22 09:12:49', '2024-09-22 09:12:49'),
-(4, 'adfsafddsaf dsafdsafsadf', 'adfsafddsaf-dsafdsafsadf', '2024-09-26 05:58:40', '2024-09-26 05:58:40');
+(1, 'saup', 'saup', '2024-09-22 09:12:49', '2024-09-22 09:12:49');
 
 -- --------------------------------------------------------
 
@@ -199,21 +198,17 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` int(6) DEFAULT NULL,
-  `product_id` int(6) DEFAULT NULL,
-  `total_amount` int(6) DEFAULT NULL,
-  `quantity` int(6) DEFAULT NULL,
-  `order_date` datetime DEFAULT NULL,
+  `name` varchar(522) DEFAULT NULL,
+  `email` varchar(522) DEFAULT NULL,
+  `phone` varchar(522) DEFAULT NULL,
+  `address` varchar(522) DEFAULT NULL,
+  `subtotal` int(6) DEFAULT NULL,
+  `discount` varchar(522) DEFAULT NULL,
+  `total` int(6) DEFAULT NULL,
   `status` varchar(522) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `user_id`, `product_id`, `total_amount`, `quantity`, `order_date`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 3, 1000, 10, '2024-09-26 20:15:03', 'pending', '2024-09-23 07:23:55', '2024-09-25 10:15:37');
 
 -- --------------------------------------------------------
 
@@ -227,16 +222,10 @@ CREATE TABLE `order_items` (
   `product_id` int(6) DEFAULT NULL,
   `quantity` int(6) DEFAULT NULL,
   `price` int(6) DEFAULT NULL,
+  `total` int(6) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `order_items`
---
-
-INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
-(1, 2, 3, 10, 100, '2024-09-23 12:32:17', '2024-09-23 12:32:17');
 
 -- --------------------------------------------------------
 
@@ -291,7 +280,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `category_id`, `image`, `price`, `description`, `quantity`, `created_at`, `updated_at`) VALUES
-(3, 'asdsadfasdfasfasfdadsf', 1, '1727016997.jpg', 9505555, 'adsfasdfasfdafds00000', 10000, '2024-09-22 09:48:40', '2024-09-22 09:56:37');
+(3, 'Maverick Musk', 1, '1727961613.png', 7, 'Lather up with the rugged and manly scents of leather, amber, and moss.', 1000, '2024-09-22 09:48:40', '2024-10-03 08:20:13'),
+(4, 'Fresh Falls', 1, '1727961934.png', 7, 'Refreshing and clean with a hint of citrus.', 100, '2024-10-03 08:25:34', '2024-10-03 08:25:34'),
+(5, 'Bay Rum', 1, '1727962274.png', 7, 'Intoxicatingly delightful cocktail of clove, cinnamon, pine, and citrus.', 100, '2024-10-03 08:31:14', '2024-10-03 08:31:14');
 
 -- --------------------------------------------------------
 
@@ -322,6 +313,7 @@ CREATE TABLE `users` (
   `phone` varchar(522) DEFAULT NULL,
   `address` varchar(522) DEFAULT NULL,
   `about` text DEFAULT NULL,
+  `usertype` int(6) NOT NULL DEFAULT 0,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
@@ -333,8 +325,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `about`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'amir gull', 'admin@gmail.com', '03023730715', 'Grass Mandi,H#7 St#7 Mohallah Data Colony Multan.', 'asdfasfdasfdsaf', NULL, '$2y$10$IMhmZiQqu7DtMIno/zrsOenI/2tMAHWKbuUflaAUMim5S4.NnVvwm', NULL, '2024-09-22 10:15:41', '2024-09-22 10:15:41');
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `about`, `usertype`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'amir gull', 'admin@gmail.com', '03023730715', 'Grass Mandi,H#7 St#7 Mohallah Data Colony Multan.', 'asdfasfdasfdsaf', 1, NULL, '$2y$10$IMhmZiQqu7DtMIno/zrsOenI/2tMAHWKbuUflaAUMim5S4.NnVvwm', NULL, '2024-09-22 10:15:41', '2024-09-22 10:15:41');
 
 --
 -- Indexes for dumped tables
@@ -460,7 +452,7 @@ ALTER TABLE `blog_posts`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -490,13 +482,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -508,7 +500,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `transactions`

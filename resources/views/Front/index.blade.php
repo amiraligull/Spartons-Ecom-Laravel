@@ -149,157 +149,49 @@
         </div>
         <div class="swiper special-offer-slide-2">
             <div class="swiper-wrapper ratio1_3">
-                <div class="swiper-slide">
-                    <div class="product-box-3">
-                        <div class="img-wrapper">
-                            <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon"
-                                    href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart"
-                                        aria-hidden="true" data-bs-toggle="tooltip"
-                                        data-bs-title="Add to Wishlist"></i></a></div>
-                            <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/1.webp')}}"
-                                        alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/1.webp')}}"
-                                        alt="product"></a></div>
-                            <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart"
-                                    tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"
-                                        data-bs-toggle="tooltip" data-bs-title="Add to cart">
-                                    </i></a>
+                @foreach($products as $product)
+                     
+                    <div class="swiper-slide">
+                        <div class="product-box-3">   
+                            <div class="img-wrapper">
+                                <div class="label-block">
+                                    <span class="lable-1">NEW</span>
+                                    <a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0">
+                                        <i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
+                                    </a>
+                                </div>
+                                <div class="product-image">
+                                    <a class="pro-first" href="{{ route('productDetails', $product->id) }}">
+                                        <img class="bg-img" src="{{ url('public/images/' . $product->image) }}" alt="{{ $product->name }}">
+                                    </a>
+                                    <a class="pro-sec" href="{{ route('productDetails', $product->id) }}">
+                                        <img class="bg-img" src="{{ url('public/images/' . $product->image) }}" alt="{{ $product->name }}">
+                                    </a>
+                                </div>
+                                <div class="cart-info-icon">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0">
+                                        <i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to cart"></i>
+                                    </a>
+                                </div>
                             </div>
-
-                        </div>
-                        <div class="product-detail">
-                            <a href="product.html">
-                                <h6>Greciilooks Women's Stylish Top</h6>
-                            </a>
-                            <button class="btn btn-primary btn-dark">Add To Cart</button>
-                            <p>$100.00 <del>$140.00</del> </p>
+                            <div class="product-detail">
+                                <a href="{{ route('productDetails', $product->id) }}">
+                                    <h5>{{ $product->title }}</h5>
+                                </a>
+                                
+                                <p>Price:${{ $product->price }} <del>${{ $product->original_price }}</del></p>
+                                <form action="{{ route('add.to.cart') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-dark">Add To Cart</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="swiper-slide">
-                    <div class="product-box-3">
-                        <div class="img-wrapper">
-                            <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon"
-                                    href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart"
-                                        aria-hidden="true" data-bs-toggle="tooltip"
-                                        data-bs-title="Add to Wishlist"></i></a></div>
-                            <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/2.webp')}}"
-                                        alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/2.webp')}}"
-                                        alt="product"></a></div>
-                            <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart"
-                                    tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"
-                                        data-bs-toggle="tooltip" data-bs-title="Add to cart">
-                                    </i></a>
-                            </div>
-
-                        </div>
-                        <div class="product-detail">
-
-                            <a href="product.html">
-                                <h6>Greciilooks Women's Stylish Top</h6>
-                            </a>
-                            <button class="btn btn-primary btn-dark">Add To Cart</button>
-                            <p>$100.00 <del>$140.00</del> </p>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="swiper-slide">
-                    <div class="product-box-3">
-                        <div class="img-wrapper">
-                            <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon"
-                                    href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart"
-                                        aria-hidden="true" data-bs-toggle="tooltip"
-                                        data-bs-title="Add to Wishlist"></i></a></div>
-                            <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/3.webp')}}"
-                                        alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/3.webp')}}"
-                                        alt="product"></a></div>
-                            <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart"
-                                    tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"
-                                        data-bs-toggle="tooltip" data-bs-title="Add to cart">
-                                    </i></a>
-                            </div>
-
-                        </div>
-                        <div class="product-detail">
-
-                            <a href="product.html">
-                                <h6>Greciilooks Women's Stylish Top</h6>
-                            </a>
-                            <button class="btn btn-primary btn-dark">Add To Cart</button>
-                            <p>$100.00 <del>$140.00</del> </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="product-box-3">
-                        <div class="img-wrapper">
-                            <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon"
-                                    href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart"
-                                        aria-hidden="true" data-bs-toggle="tooltip"
-                                        data-bs-title="Add to Wishlist"></i></a></div>
-                            <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/4.webp')}}"
-                                        alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/4.webp')}}"
-                                        alt="product"></a></div>
-                            <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart"
-                                    tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"
-                                        data-bs-toggle="tooltip" data-bs-title="Add to cart">
-                                    </i></a>
-                            </div>
-
-                        </div>
-                        <div class="product-detail">
-
-                            <a href="product.html">
-                                <h6>Greciilooks Women's Stylish Top</h6>
-                            </a>
-                            <button class="btn btn-primary btn-dark">Add To Cart</button>
-                            <p>$100.00 <del>$140.00</del> </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="product-box-3">
-                        <div class="img-wrapper">
-                            <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon"
-                                    href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart"
-                                        aria-hidden="true" data-bs-toggle="tooltip"
-                                        data-bs-title="Add to Wishlist"></i></a></div>
-                            <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/1.webp')}}"
-                                        alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img"
-                                        src="{{asset('assets/front/images/product/product-3/1.webp')}}"
-                                        alt="product"></a></div>
-                            <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart"
-                                    tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"
-                                        data-bs-toggle="tooltip" data-bs-title="Add to cart">
-                                    </i></a>
-                            </div>
-
-                        </div>
-                        <div class="product-detail">
-
-                            <a href="product.html">
-                                <h6>Greciilooks Women's Stylish Top</h6>
-                            </a>
-                            <button class="btn btn-primary btn-dark">Add To Cart</button>
-                            <p>$100.00 <del>$140.00</del> </p>
-                        </div>
-                    </div>
-                </div>
-
+            
             </div>
         </div>
     </div>

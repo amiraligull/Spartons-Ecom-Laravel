@@ -18,7 +18,7 @@ use App\Http\Controllers\FrontController;
 Route::get('/', [App\Http\Controllers\FrontController::class, 'index']);
 Route::get('/contact', [App\Http\Controllers\FrontController::class, 'contact']);
 Route::get('/shop', [App\Http\Controllers\FrontController::class, 'shop']);
-Route::get('/productDetails', [App\Http\Controllers\FrontController::class, 'productDetails']);
+Route::get('/productDetails/{id}', [App\Http\Controllers\FrontController::class, 'productDetails'])->name('productDetails');
 Route::get('/blog', [App\Http\Controllers\FrontController::class, 'blog']);
 Route::get('/blogDetails', [App\Http\Controllers\FrontController::class, 'blogDetails']);
 Route::get('/discounts', [App\Http\Controllers\FrontController::class, 'discounts']);
@@ -28,7 +28,16 @@ Route::get('/policy', [App\Http\Controllers\FrontController::class, 'policy']);
 Route::get('/returnFund', [App\Http\Controllers\FrontController::class, 'returnFund']);
 Route::get('/squatchDifference', [App\Http\Controllers\FrontController::class, 'squatchDifference']);
 Route::get('/cart', [App\Http\Controllers\FrontController::class, 'cart']);
-Route::get('/checkout', [App\Http\Controllers\FrontController::class, 'checkout']);
+Route::post('/add-to-cart', [FrontController::class, 'addToCart'])->name('add.to.cart');
+Route::put('cart/update/{id}', [FrontController::class, 'updateCart'])->name('cart.update');
+Route::delete('cart/remove/{id}', [FrontController::class, 'removeCart'])->name('cart.remove');
+
+
+Route::get('/checkout', [App\Http\Controllers\FrontController::class, 'checkout'])->name("checkout");
+Route::post('checkout/apply-coupon', [FrontController::class, 'applyCoupon'])->name('apply.coupon');
+Route::post('/place-order', [FrontController::class, 'placeOrder'])->name('place.order');
+
+
 Route::get('/dashboard', [App\Http\Controllers\FrontController::class, 'dashboard']);
 Route::get('/thanks', [App\Http\Controllers\FrontController::class, 'thanks']);
 

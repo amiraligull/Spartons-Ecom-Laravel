@@ -261,8 +261,10 @@
                                 </div>
                             </li>
                             <li class=" shopping-cart"> <a class="p-0" href="{{url('cart')}}">
-                                    <div class="shoping-prize"><i class="iconsax pe-2" data-icon="basket-2"> </i>0
-                                        items</div>
+                                    <div class="shoping-prize"><i class="iconsax pe-2" data-icon="basket-2"> </i>
+                                        {{$totalCartItems}}
+                                        items
+                                    </div>
                                 </a></li>
                         </ul>
                     </div>
