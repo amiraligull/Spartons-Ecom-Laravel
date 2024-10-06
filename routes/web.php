@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontController;
-
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +36,9 @@ Route::delete('cart/remove/{id}', [FrontController::class, 'removeCart'])->name(
 Route::get('/checkout', [App\Http\Controllers\FrontController::class, 'checkout'])->name("checkout");
 Route::post('checkout/apply-coupon', [FrontController::class, 'applyCoupon'])->name('apply.coupon');
 Route::post('/place-order', [FrontController::class, 'placeOrder'])->name('place.order');
+Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place.order');
+Route::get('/order-success', [OrderController::class, 'orderSuccess'])->name('order.success');
+Route::get('/order-failure', [OrderController::class, 'orderFailure'])->name('order.failure');
 
 
 Route::get('/dashboard', [App\Http\Controllers\FrontController::class, 'dashboard']);
